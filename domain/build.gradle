@@ -1,7 +1,5 @@
-plugins {
-    id 'java-library'
-    id 'kotlin'
-}
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_7
