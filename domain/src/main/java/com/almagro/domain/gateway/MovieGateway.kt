@@ -4,7 +4,7 @@ import arrow.core.Either
 import com.almagro.domain.entities.DomainError
 import com.almagro.domain.entities.Movies
 
-interface MoviesGateway {
+interface MovieGateway {
 
     suspend fun fetchPopularMovies(): Either<DomainError, Movies>
 

@@ -1,11 +1,11 @@
 package com.almagro.domain.usecase
 
-import com.almagro.domain.gateway.MoviesGateway
+import com.almagro.domain.gateway.MovieGateway
 import javax.inject.Inject
 
 class FetchTopRatedMoviesUseCase
 @Inject constructor(
-    private val moviesGateway: MoviesGateway
+    private val movieGateway: MovieGateway
 ) {
-    suspend operator fun invoke() = moviesGateway.fetchTopRatedMovies()
+    suspend operator fun invoke() = movieGateway.fetchTopRatedMovies()
 }
