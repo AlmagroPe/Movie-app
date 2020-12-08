@@ -12,13 +12,13 @@ class MovieDataGateway
     private val movieApiClient: MovieApiClient
 ) : MovieGateway {
 
-    override suspend fun fetchPopularMovies(): Either<DomainError, Movies> =
-        movieApiClient.fetchPopularMovies()
+    override suspend fun fetchPopularMovies(page: Int): Either<DomainError, Movies> =
+        movieApiClient.fetchPopularMovies(page)
 
-    override suspend fun fetchOnAirMovies(): Either<DomainError, Movies> =
-        movieApiClient.fetchOnAirMovies()
+    override suspend fun fetchOnAirMovies(page: Int): Either<DomainError, Movies> =
+        movieApiClient.fetchOnAirMovies(page)
 
-    override suspend fun fetchTopRatedMovies(): Either<DomainError, Movies> =
-        movieApiClient.fetchTopRatedMovies()
+    override suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies> =
+        movieApiClient.fetchTopRatedMovies(page)
 
 }

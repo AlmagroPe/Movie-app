@@ -39,7 +39,7 @@ class MovieRetrofitClient
 
     val api: MovieApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl("https://api.themoviedb.org/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

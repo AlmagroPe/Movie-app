@@ -7,11 +7,11 @@ import com.almagro.domain.entities.Movies
 
 interface MovieApiClient {
 
-    suspend fun fetchPopularMovies(): Either<DomainError, Movies>
+    suspend fun fetchPopularMovies(page: Int): Either<DomainError, Movies>
 
 //    suspend fun fetchAiringMovies(): Either<Failure, Movies>
 
-    suspend fun fetchOnAirMovies(): Either<DomainError, Movies>
+    suspend fun fetchOnAirMovies(page: Int): Either<DomainError, Movies>
 
-    suspend fun fetchTopRatedMovies(): Either<DomainError, Movies>
+    suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies>
 }

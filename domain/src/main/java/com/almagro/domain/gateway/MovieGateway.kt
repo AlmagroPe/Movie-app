@@ -6,9 +6,9 @@ import com.almagro.domain.entities.Movies
 
 interface MovieGateway {
 
-    suspend fun fetchPopularMovies(): Either<DomainError, Movies>
+    suspend fun fetchPopularMovies(page: Int): Either<DomainError, Movies>
 
-    suspend fun fetchOnAirMovies(): Either<DomainError, Movies>
+    suspend fun fetchOnAirMovies(page: Int): Either<DomainError, Movies>
 
-    suspend fun fetchTopRatedMovies(): Either<DomainError, Movies>
+    suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies>
 }

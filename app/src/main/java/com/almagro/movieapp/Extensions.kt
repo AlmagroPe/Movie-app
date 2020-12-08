@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 
 fun ImageView.loadUrl(url: String?) {
     Glide.with(context)
-        .load(url)
+            //TODO:move the path
+        .load("https://image.tmdb.org/t/p/w500" + url)
         .into(this)
 }

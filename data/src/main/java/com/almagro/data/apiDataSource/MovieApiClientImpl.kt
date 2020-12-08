@@ -14,18 +14,18 @@ class MovieApiClientImpl
     private val dealsRetrofitClient: MovieRetrofitClient
 ): MovieApiClient {
 
-    override suspend fun fetchPopularMovies(): Either<DomainError, Movies> =
-        dealsRetrofitClient.api.fetchPopularMovies().unWrap()
+    override suspend fun fetchPopularMovies(page: Int): Either<DomainError, Movies> =
+        dealsRetrofitClient.api.fetchPopularMovies(page).unWrap()
             .map { it.toDomain() }
             .mapLeft { it.parseError() }
 
-    override suspend fun fetchOnAirMovies(): Either<DomainError, Movies> =
-        dealsRetrofitClient.api.fetchOnAirMovies().unWrap()
+    override suspend fun fetchOnAirMovies(page: Int): Either<DomainError, Movies> =
+        dealsRetrofitClient.api.fetchOnAirMovies(page).unWrap()
             .map { it.toDomain() }
             .mapLeft { it.parseError() }
 
-    override suspend fun fetchTopRatedMovies(): Either<DomainError, Movies> =
-        dealsRetrofitClient.api.fetchTopRatedMovies().unWrap()
+    override suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies> =
+        dealsRetrofitClient.api.fetchTopRatedMovies(page).unWrap()
             .map { it.toDomain() }
             .mapLeft { it.parseError() }
 }

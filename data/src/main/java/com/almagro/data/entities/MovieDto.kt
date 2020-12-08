@@ -13,7 +13,7 @@ data class MovieDto(
     @SerializedName("title")
     val title: String,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerializedName("popularity")
     val popularity: Float,
     @SerializedName("vote_count")
@@ -36,7 +36,7 @@ fun MovieDto.toDomain() =
         originalTitle = originalTitle,
         originalLanguage = originalLanguage,
         title = title,
-        backdropPath = backdropPath,
+        backdropPath = backdropPath ?: "",
         popularity = popularity,
         voteCount = voteCount,
         video = video,

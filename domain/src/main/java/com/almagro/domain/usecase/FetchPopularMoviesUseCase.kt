@@ -7,5 +7,6 @@ class FetchPopularMoviesUseCase
 @Inject constructor(
     private val movieGateway: MovieGateway
 ) {
-    suspend operator fun invoke() = movieGateway.fetchPopularMovies()
+    suspend operator fun invoke(page: Int) =
+        movieGateway.fetchPopularMovies(page)
 }

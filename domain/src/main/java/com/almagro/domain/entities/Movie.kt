@@ -13,4 +13,22 @@ data class Movie(
     val posterPath: String,
     val adult: Boolean,
     val releaseDate: String
-)
+) {
+    companion object {
+        fun empty() =
+            Movie(
+                0,
+                "",
+                "",
+                "",
+                "",
+                0F,
+                0,
+                false,
+                0F,
+                "",
+                false,
+                ""
+            )
+    }
+}
