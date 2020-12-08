@@ -8,9 +8,16 @@ java {
 
 ext {
     arrowVersion = '0.10.5'
+    daggerVersion = '2.16'
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    //Arrow
     api "io.arrow-kt:arrow-fx:$arrowVersion"
+
+    //Dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 }

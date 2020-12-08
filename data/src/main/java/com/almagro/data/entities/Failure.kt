@@ -1,5 +1,6 @@
 package com.almagro.data.entities
 
+import com.almagro.domain.entities.DomainError
 import com.google.gson.annotations.SerializedName
 
 sealed class Failure : Throwable() {
@@ -15,3 +16,9 @@ sealed class Failure : Throwable() {
         val statusCode: String
     ) : Failure()
 }
+
+fun Failure.parseError() =
+    when(this) {
+        is Failure.ErrorNetworkDto -> DomainError.SpecificError(this.statusMessage, this.statusCode)
+        else -> DomainError.ServerError
+    }

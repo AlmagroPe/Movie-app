@@ -11,17 +11,14 @@ class MoviesDataGateway
 @Inject constructor(
     private val movieApiClient: MovieApiClient
 ) : MoviesGateway {
-    
-    override suspend fun fetchPopularMovies(): Either<DomainError, Movies> {
-        TODO("Not yet implemented")
-    }
 
-    override suspend fun fetchOnAirMovies(): Either<DomainError, Movies> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun fetchPopularMovies(): Either<DomainError, Movies> =
+        movieApiClient.fetchPopularMovies()
 
-    override suspend fun fetchTopRatedMovies(): Either<DomainError, Movies> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun fetchOnAirMovies(): Either<DomainError, Movies> =
+        movieApiClient.fetchOnAirMovies()
+
+    override suspend fun fetchTopRatedMovies(): Either<DomainError, Movies> =
+        movieApiClient.fetchTopRatedMovies()
 
 }

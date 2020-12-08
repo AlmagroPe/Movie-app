@@ -1,4 +1,6 @@
 package com.almagro.domain.entities
 
-class DomainError {
+sealed class DomainError {
+    object ServerError : DomainError()
+    class SpecificError(val statusMessage: String, val statusCode: String) : DomainError()
 }
