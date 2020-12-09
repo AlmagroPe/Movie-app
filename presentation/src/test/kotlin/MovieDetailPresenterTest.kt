@@ -14,6 +14,8 @@ import kotlin.coroutines.CoroutineContext
 @RunWith(MockitoJUnitRunner::class)
 class MovieDetailPresenterTest {
 
+    //TODO: finish test
+
     private lateinit var presenter: MovieDetailPresenter
 
     @Mock

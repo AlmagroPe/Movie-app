@@ -17,6 +17,7 @@ suspend fun <Domain : Any> Response<Domain>?.unWrap(): Either<Failure, Domain> =
             return when {
                 code in 200..208 && body != null -> getSuccessResult(body)
                 code in 200..208 && body == null -> getNoResponseResult()
+                //TODO: control error
 //                code in 400..512 && it.errorBody() != null -> getNoResponseResult(it.errorBody())
                 code in 400..512 -> getFailureError()
                 else -> getFailureError()

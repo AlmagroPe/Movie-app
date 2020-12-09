@@ -8,6 +8,7 @@ import com.almagro.domain.entities.Movie
 import com.almagro.domain.entities.Movies
 import com.almagro.movieapp.R
 import com.almagro.movieapp.core.BaseViewHolder
+import com.almagro.movieapp.formatDate
 import com.almagro.movieapp.loadUrl
 import kotlinx.android.synthetic.main.item_movie.view.*
 
@@ -88,10 +89,10 @@ class MoviesListAdapter(
             val movie = moviesList[position]
 
             itemView.apply {
-                ivMovie.loadUrl(movie.posterPath)
+                ivMovie.loadUrl(movie.fullPosterPath)
                 tvNameMovie.text = movie.title
-                tvValuePopularity.text = movie.popularity.toString()
-                tvDateMovie.text = movie.releaseDate
+                tvValuePopularity.text = movie.voteAverage.toString()
+                tvDateMovie.text = movie.releaseDate.formatDate()
                 clRoot.setOnClickListener { itemClick(movie.id) }
             }
         }

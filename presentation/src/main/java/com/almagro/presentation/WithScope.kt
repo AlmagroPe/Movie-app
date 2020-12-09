@@ -12,6 +12,7 @@ interface WithScope : CoroutineScope {
     override val coroutineContext: CoroutineContext
     val io: CoroutineContext
 
+    //TODO: clean this file
     fun <A, B> CoroutineScope.launchIOSafe(
         f: suspend () -> Either<A, B>,
         error: (A) -> Unit = {},

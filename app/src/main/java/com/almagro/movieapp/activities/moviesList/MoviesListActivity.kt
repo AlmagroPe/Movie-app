@@ -1,11 +1,11 @@
 package com.almagro.movieapp.activities.moviesList
 
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.almagro.domain.entities.Movie
 import com.almagro.movieapp.MovieApp
 import com.almagro.movieapp.R
@@ -16,6 +16,7 @@ import com.almagro.presentation.moviesList.MoviesListPresenter
 import com.almagro.presentation.moviesList.MoviesListView
 import kotlinx.android.synthetic.main.activity_movies_list.*
 import javax.inject.Inject
+
 
 class MoviesListActivity : AppCompatActivity(), MoviesListView {
 
@@ -51,6 +52,33 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
 
     override fun navigateToMovieDetail(movieId: Int) {
         startActivity(MovieDetailActivity.create(this, movieId))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.itemByPopular -> {
+                moviesListAdapter?.clear()
+                presenter.fetchPopularMovies()
+                true
+            }
+            R.id.itemByOnAir -> {
+                moviesListAdapter?.clear()
+                presenter.fetchOnAirMovies()
+                true
+            }
+            R.id.itemByScore -> {
+                moviesListAdapter?.clear()
+                presenter.fetchTopRatedMovies()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setUpComponent() {

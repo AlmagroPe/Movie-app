@@ -9,6 +9,7 @@ import com.almagro.domain.entities.MovieDetail
 import com.almagro.movieapp.MovieApp
 import com.almagro.movieapp.R
 import com.almagro.movieapp.di.movieDetail.MovieDetailModule
+import com.almagro.movieapp.formatDate
 import com.almagro.movieapp.loadUrl
 import com.almagro.presentation.movieDetail.MovieDetailPresenter
 import com.almagro.presentation.movieDetail.MovieDetailView
@@ -45,7 +46,11 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
     }
 
     override fun setUpView(movieDetail: MovieDetail) {
-        ivMovieDetail.loadUrl(movieDetail.backdropPath)
+        ivMovieDetail.loadUrl(movieDetail.fullBackdropPath)
+        tvTitleMovieDetail.text = movieDetail.title
+        tvOverviewMovieDetail.text = movieDetail.overview
+        tvRatingMovieDetail.text = movieDetail.voteAverage.toString()
+        tvDateMovieDetail.text = movieDetail.releaseDate.formatDate()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

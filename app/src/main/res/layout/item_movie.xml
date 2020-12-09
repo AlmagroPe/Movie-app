@@ -9,6 +9,7 @@
     android:paddingStart="14dp"
     android:paddingEnd="14dp"
     android:paddingBottom="14dp"
+    android:paddingTop="10dp"
     android:foreground="?selectableItemBackground">
 
     <androidx.cardview.widget.CardView
@@ -45,23 +46,23 @@
         app:layout_constraintTop_toBottomOf="@+id/cvMovie"
         tools:text="Movie Name" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/tvPopularity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="Popularity:"
-        android:textColor="@color/white"
+        app:srcCompat="@drawable/ic_star_rate_white_18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNameMovie" />
 
     <TextView
         android:id="@+id/tvValuePopularity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/tvPopularity"
+        app:layout_constraintEnd_toStartOf="@+id/tvDateMovie"
         app:layout_constraintTop_toBottomOf="@+id/tvNameMovie"
         android:layout_marginStart="4dp"
         android:textColor="@color/white"
@@ -71,8 +72,8 @@
         android:id="@+id/tvDateMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tvValuePopularity"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameMovie"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:textColor="@color/white"

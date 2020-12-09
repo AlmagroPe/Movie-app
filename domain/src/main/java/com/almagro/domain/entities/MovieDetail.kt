@@ -33,4 +33,10 @@ data class MovieDetail(
                 ""
             )
     }
+
+    val fullPosterPath
+        get() = "https://image.tmdb.org/t/p/w500$posterPath"
+
+    val fullBackdropPath
+        get() = "https://image.tmdb.org/t/p/w500$backdropPath"
 }
