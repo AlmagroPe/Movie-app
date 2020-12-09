@@ -3,12 +3,12 @@ package com.almagro.movieapp.activities.movieDetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.almagro.domain.entities.MovieDetail
 import com.almagro.movieapp.MovieApp
 import com.almagro.movieapp.R
 import com.almagro.movieapp.di.movieDetail.MovieDetailModule
-import com.almagro.movieapp.di.moviesList.MoviesListModule
 import com.almagro.movieapp.loadUrl
 import com.almagro.presentation.movieDetail.MovieDetailPresenter
 import com.almagro.presentation.movieDetail.MovieDetailView
@@ -45,7 +45,13 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
     }
 
     override fun setUpView(movieDetail: MovieDetail) {
-        ivMovieDetail.loadUrl(movieDetail.posterPath)
+        ivMovieDetail.loadUrl(movieDetail.backdropPath)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setUpComponent() {
