@@ -2,6 +2,7 @@ package com.almagro.domain.gateway
 
 import arrow.core.Either
 import com.almagro.domain.entities.DomainError
+import com.almagro.domain.entities.MovieDetail
 import com.almagro.domain.entities.Movies
 
 interface MovieGateway {
@@ -11,4 +12,6 @@ interface MovieGateway {
     suspend fun fetchOnAirMovies(page: Int): Either<DomainError, Movies>
 
     suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies>
+
+    suspend fun fetchMovieDetail(movieId: Int): Either<DomainError, MovieDetail>
 }

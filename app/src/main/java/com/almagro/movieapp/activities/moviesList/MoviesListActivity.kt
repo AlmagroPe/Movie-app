@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.almagro.domain.entities.Movie
 import com.almagro.movieapp.MovieApp
 import com.almagro.movieapp.R
+import com.almagro.movieapp.activities.movieDetail.MovieDetailActivity
 import com.almagro.movieapp.core.PaginationScrollListener
 import com.almagro.movieapp.di.moviesList.MoviesListModule
 import com.almagro.presentation.moviesList.MoviesListPresenter
@@ -49,7 +50,7 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
     }
 
     override fun navigateToMovieDetail(movieId: Int) {
-        //TODO: Navigate to detail
+        startActivity(MovieDetailActivity.create(this, movieId))
     }
 
     private fun setUpComponent() {

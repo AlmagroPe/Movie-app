@@ -5,6 +5,7 @@ import com.almagro.data.entities.Failure
 import com.almagro.data.entities.parseError
 import com.almagro.data.entities.toDomain
 import com.almagro.domain.entities.DomainError
+import com.almagro.domain.entities.MovieDetail
 import com.almagro.domain.entities.Movies
 import com.almagro.movieapp.unWrap
 import javax.inject.Inject
@@ -26,6 +27,11 @@ class MovieApiClientImpl
 
     override suspend fun fetchTopRatedMovies(page: Int): Either<DomainError, Movies> =
         dealsRetrofitClient.api.fetchTopRatedMovies(page).unWrap()
+            .map { it.toDomain() }
+            .mapLeft { it.parseError() }
+
+    override suspend fun fetchMovieDetail(movieId: Int): Either<DomainError, MovieDetail> =
+        dealsRetrofitClient.api.fetchMovieDetail(movieId).unWrap()
             .map { it.toDomain() }
             .mapLeft { it.parseError() }
 }

@@ -1,5 +1,6 @@
 package com.almagro.movieapp.di.movieDetail
 
+import com.almagro.domain.usecase.FetchMovieDetailUseCase
 import com.almagro.movieapp.di.AsynchronyModule
 import com.almagro.presentation.WithScope
 import com.almagro.presentation.movieDetail.MovieDetailPresenter
@@ -12,9 +13,11 @@ class MovieDetailModule(private val view: MovieDetailView) {
 
     @Provides
     fun providePresenter(
+        fetchMovieDetailUseCase: FetchMovieDetailUseCase,
         withScope: WithScope
     ) = MovieDetailPresenter(
-        view,
-        withScope
+        view = view,
+        fetchMovieDetailUseCase = fetchMovieDetailUseCase,
+        withScope = withScope
     )
 }
