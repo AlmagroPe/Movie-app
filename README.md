@@ -17,20 +17,20 @@ Finally, the app module will contain the application views and UI models, if nec
 
 The concept of functional programming "Either" has been used, which is a monadic type of functional programming. Represents a disjoint function, it is made up of two Left and Right values, so it can only hold one value. The left represents the failure case, while the right contains the success value. Every time a request is made, it will be checked whether the transaction has gone well or badly and it will return Left, with the error that will be represented by the class "Failure" which is a sealed class with as many classes as different errors we have, or Right with the data obtained. Being a small app it may not be necessary to introduce a whole library to just use Either, but this library will provide us with versatility in the future
 
-### Some questions
-##### 1. How long did you spend on the coding test? What would you add to your solution if you had more time? If you didn't spend a lot of time testing coding, use this as an opportunity to explain what you would add.
+Some questions
+-------------
+#### 1. How long did you spend on the coding test? What would you add to your solution if you had more time? If you didn't spend a lot of time testing coding, use this as an opportunity to explain what you would add.
 I spent 2 days to coding this app. I would like to improve many things but the 3 more important are: UI design, improve error detection for more information and add more drives and instrumented tests
 
-##### 2. How would you locate a performance problem in production? Have you ever had to do this?
+#### 2. How would you locate a performance problem in production? Have you ever had to do this?
 I typically use the Firebase SDK to track crashes and poor performance. Firebase warns you about a crash and depending on the affected users you must resolve it quickly to upload a hotfix
 
-##### 3. How would you ask for a "dangerous" permission for the user, for example, if location is required?
+#### 3. How would you ask for a "dangerous" permission for the user, for example, if location is required?
 To request permissions from the user, you must follow the guides that google has.
 
 
 ### Libraries
 * [Android Support Library][support-lib]
-* [Android Data Binding][data-binding]
 * [Dagger 2][dagger2]
 * [Retrofit][retrofit] 
 * [Glide][glide]
