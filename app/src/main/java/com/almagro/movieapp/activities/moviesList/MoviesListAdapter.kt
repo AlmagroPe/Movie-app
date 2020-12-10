@@ -93,7 +93,7 @@ class MoviesListAdapter(
                 tvNameMovie.text = movie.title
                 tvValuePopularity.text = movie.voteAverage.toString()
                 tvDateMovie.text = movie.releaseDate.formatDate()
-                clRoot.setOnClickListener { itemClick(movie.id) }
+                itemRoot.setOnClickListener { itemClick(movie.id) }
             }
         }
     }

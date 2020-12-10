@@ -12,9 +12,6 @@ interface MovieApi {
     @GET("movie/popular")
     suspend fun fetchPopularMovies(@Query("page") page: Int): Response<MoviesDto>
 
-//    @GET("/tv/airing_today")
-//    suspend fun fetchAiringMovies(): Response<MoviesDto>
-
     @GET("movie/now_playing")
     suspend fun fetchOnAirMovies(@Query("page") page: Int): Response<MoviesDto>
 

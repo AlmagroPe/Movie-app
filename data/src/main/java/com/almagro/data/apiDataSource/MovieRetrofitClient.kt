@@ -1,9 +1,12 @@
 package com.almagro.data.apiDataSource
 
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import okio.Buffer
+import okio.BufferedSource
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -30,7 +33,20 @@ class MovieRetrofitClient
                     .url(url)
                     .build()
 
-                return@Interceptor chain.proceed(request)
+                return@Interceptor try {chain.proceed(request)} catch (e: IOException) {
+                    Response.Builder()
+                        .code(418)
+                        .request(chain.request())
+                        .body(object: ResponseBody() {
+                            override fun contentLength() = 0L
+                            override fun contentType(): MediaType? = null
+                            override fun source(): BufferedSource = Buffer()
+                        })
+                        .message(e.message ?: e.toString())
+                        .protocol(Protocol.HTTP_1_1)
+                        .build()
+
+                }
             }
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
