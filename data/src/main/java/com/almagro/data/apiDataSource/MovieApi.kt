@@ -9,19 +9,18 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    //TODO: move 3 to apiclient
-    @GET("3/movie/popular")
+    @GET("movie/popular")
     suspend fun fetchPopularMovies(@Query("page") page: Int): Response<MoviesDto>
 
 //    @GET("/tv/airing_today")
 //    suspend fun fetchAiringMovies(): Response<MoviesDto>
 
-    @GET("3/movie/now_playing")
+    @GET("movie/now_playing")
     suspend fun fetchOnAirMovies(@Query("page") page: Int): Response<MoviesDto>
 
-    @GET("3/movie/top_rated")
+    @GET("movie/top_rated")
     suspend fun fetchTopRatedMovies(@Query("page") page: Int): Response<MoviesDto>
 
-    @GET("3/movie/{movie_id}")
+    @GET("movie/{movie_id}")
     suspend fun fetchMovieDetail(@Path("movie_id") movieId: Int): Response<MovieDetailDto>
 }

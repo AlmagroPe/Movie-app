@@ -17,7 +17,6 @@ suspend fun <Domain : Any> Response<Domain>?.unWrap(): Either<Failure, Domain> =
             return when {
                 code in 200..208 && body != null -> getSuccessResult(body)
                 code in 200..208 && body == null -> getNoResponseResult()
-                //TODO: control error
 //                code in 400..512 && it.errorBody() != null -> getNoResponseResult(it.errorBody())
                 code in 400..512 -> getFailureError()
                 else -> getFailureError()
@@ -52,7 +51,7 @@ private fun <T : Any> getSuccessResultList(body: List<T>): Either<Failure, List<
     body.right()
 
 //private fun <T : Any> getNoResponseResult(errorBody: ResponseBody?): Either<ErrorNetworkDto, T> =
-//    errorBody.left()
+//    Failure.ErrorNetworkDto()
 
 private fun <T : Any> getNoResponseResult(): Either<Failure, T> =
     Failure.NoData.left()

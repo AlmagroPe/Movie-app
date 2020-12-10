@@ -12,8 +12,10 @@ import com.almagro.movieapp.R
 import com.almagro.movieapp.activities.movieDetail.MovieDetailActivity
 import com.almagro.movieapp.core.PaginationScrollListener
 import com.almagro.movieapp.di.moviesList.MoviesListModule
+import com.almagro.movieapp.viewComponents.showSnackBarError
 import com.almagro.presentation.moviesList.MoviesListPresenter
 import com.almagro.presentation.moviesList.MoviesListView
+import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movies_list.*
 import javax.inject.Inject
 
@@ -54,8 +56,15 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
         startActivity(MovieDetailActivity.create(this, movieId))
     }
 
+    override fun showError(action: () -> Unit) {
+        clRoot.showSnackBarError(R.string.error_api) { action() }
+    }
+
+    override fun clearMovieList() {
+        moviesListAdapter?.clear()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -63,17 +72,17 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.itemByPopular -> {
-                moviesListAdapter?.clear()
+                presenter.resetCurrentValues()
                 presenter.fetchPopularMovies()
                 true
             }
             R.id.itemByOnAir -> {
-                moviesListAdapter?.clear()
+                presenter.resetCurrentValues()
                 presenter.fetchOnAirMovies()
                 true
             }
             R.id.itemByScore -> {
-                moviesListAdapter?.clear()
+                presenter.resetCurrentValues()
                 presenter.fetchTopRatedMovies()
                 true
             }

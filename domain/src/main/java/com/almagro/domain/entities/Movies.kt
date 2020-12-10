@@ -5,4 +5,14 @@ data class Movies(
     val totalResults: Int,
     val totalPages: Int,
     val movies: List<Movie>
-)
+) {
+    companion object {
+        fun empty() =
+            Movies(
+                0,
+                0,
+                0,
+                listOf()
+            )
+    }
+}

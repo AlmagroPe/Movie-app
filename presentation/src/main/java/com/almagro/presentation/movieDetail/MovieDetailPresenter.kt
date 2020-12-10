@@ -13,7 +13,7 @@ class MovieDetailPresenter(
         launchIOSafe(
             f = { fetchMovieDetailUseCase(movieId) },
             success = { view?.setUpView(it) },
-            error = {}
+            error = { view?.showError { onCreated(movieId) } }
         )
     }
 }

@@ -11,6 +11,7 @@ import com.almagro.movieapp.R
 import com.almagro.movieapp.di.movieDetail.MovieDetailModule
 import com.almagro.movieapp.formatDate
 import com.almagro.movieapp.loadUrl
+import com.almagro.movieapp.viewComponents.showSnackBarError
 import com.almagro.presentation.movieDetail.MovieDetailPresenter
 import com.almagro.presentation.movieDetail.MovieDetailView
 import kotlinx.android.synthetic.main.activity_movie_detail.*
@@ -51,6 +52,10 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
         tvOverviewMovieDetail.text = movieDetail.overview
         tvRatingMovieDetail.text = movieDetail.voteAverage.toString()
         tvDateMovieDetail.text = movieDetail.releaseDate.formatDate()
+    }
+
+    override fun showError(action: () -> Unit) {
+        clRoot.showSnackBarError(R.string.error_api) { action() }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

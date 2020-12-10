@@ -7,4 +7,8 @@ interface MoviesListView {
     fun loadMovies(moviesList: List<Movie>)
 
     fun navigateToMovieDetail(movieId: Int)
+
+    fun showError(action: () -> Unit)
+
+    fun clearMovieList()
 }

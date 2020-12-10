@@ -26,7 +26,7 @@ class MoviesListPresenter(
                 page++
                 view?.loadMovies(it.movies)
             },
-            error = {}
+            error = { view?.showError { fetchPopularMovies() } }
         )
     }
 
@@ -37,7 +37,7 @@ class MoviesListPresenter(
                 page++
                 view?.loadMovies(it.movies)
             },
-            error = {}
+            error = { view?.showError { fetchOnAirMovies() } }
         )
     }
 
@@ -48,11 +48,16 @@ class MoviesListPresenter(
                 page++
                 view?.loadMovies(it.movies)
             },
-            error = {}
+            error = { view?.showError { fetchTopRatedMovies() }}
         )
     }
 
     fun onClickMovie(movieId: Int) {
         view?.navigateToMovieDetail(movieId)
+    }
+
+    fun resetCurrentValues() {
+        page = 1
+        view?.clearMovieList()
     }
 }

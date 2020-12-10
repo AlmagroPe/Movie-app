@@ -4,7 +4,7 @@ import com.almagro.movieapp.activities.movieDetail.MovieDetailActivity
 import com.almagro.movieapp.di.moviesList.MoviesListScope
 import dagger.Subcomponent
 
-@MoviesListScope
+@MovieDetailScope
 @Subcomponent(
     modules = [MovieDetailModule::class]
 )
