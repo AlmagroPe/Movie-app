@@ -1,23 +1,37 @@
 package com.almagro.domain.entities
 
 data class MovieDetail(
-    val id: Int,
-    val originalTitle: String,
-    val originalLanguage: String,
-    val title: String,
-    val backdropPath: String,
-    val popularity: Float,
-    val voteCount: Int,
-    val video: Boolean,
-    val voteAverage: Float,
-    val posterPath: String,
-    val adult: Boolean,
-    val releaseDate: String,
-    val overview: String
+    val overview: String,
+    override val id: Int,
+    override val originalTitle: String,
+    override val originalLanguage: String,
+    override val title: String,
+    override val backdropPath: String,
+    override val popularity: Float,
+    override val voteCount: Int,
+    override val video: Boolean,
+    override val voteAverage: Float,
+    override val posterPath: String,
+    override val adult: Boolean,
+    override val releaseDate: String
+) : Movie(
+    id,
+    originalTitle,
+    originalLanguage,
+    title,
+    backdropPath,
+    popularity,
+    voteCount,
+    video,
+    voteAverage,
+    posterPath,
+    adult,
+    releaseDate
 ) {
     companion object {
         fun empty() =
             MovieDetail(
+                "",
                 0,
                 "",
                 "",
@@ -29,14 +43,7 @@ data class MovieDetail(
                 0F,
                 "",
                 false,
-                "",
                 ""
             )
     }
-
-    val fullPosterPath
-        get() = "https://image.tmdb.org/t/p/w500$posterPath"
-
-    val fullBackdropPath
-        get() = "https://image.tmdb.org/t/p/w500$backdropPath"
 }

@@ -20,4 +20,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <include
+        layout="@layout/item_error_fullscreen"
+        android:id="@+id/moviesListError"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/item_loading_fullscreen"
+        android:id="@+id/moviesListLoading"
+        android:visibility="gone"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/clRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

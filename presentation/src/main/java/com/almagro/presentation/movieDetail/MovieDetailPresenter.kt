@@ -10,10 +10,17 @@ class MovieDetailPresenter(
 ) : WithScope by withScope {
 
     fun onCreated(movieId: Int) {
+        view?.showLoading()
         launchIOSafe(
             f = { fetchMovieDetailUseCase(movieId) },
-            success = { view?.setUpView(it) },
-            error = { view?.showError { onCreated(movieId) } }
+            success = {
+                view?.setUpView(it)
+                view?.hideLoading()
+            },
+            error = {
+                view?.showErrorView()
+                view?.showError { onCreated(movieId) }
+            }
         )
     }
 }

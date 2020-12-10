@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.almagro.domain.entities.MovieDetail
 import com.almagro.movieapp.MovieApp
@@ -62,6 +63,19 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
         if (item.itemId == android.R.id.home)
             onBackPressed()
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun showLoading() {
+        moviesDetailLoading.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        moviesDetailLoading.visibility = View.GONE
+    }
+
+    override fun showErrorView() {
+        moviesDetailLoading.visibility = View.GONE
+        moviesDetailError.visibility = View.VISIBLE
     }
 
     private fun setUpComponent() {

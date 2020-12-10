@@ -52,7 +52,7 @@ class MovieDetailPresenterTest {
     @Test
     fun `should request movie detail when view is created`() {
         //When
-        presenter.onCreated(any())
+        presenter.onCreated(1)
 
         //Then
         runBlocking {
@@ -68,13 +68,15 @@ class MovieDetailPresenterTest {
             doAnswer {
                 MovieDetail.empty().right()
             }.whenever(fetchMovieDetailUseCase)(any())
+
+
+            //When
+            presenter.onCreated(1)
+
+            //Then
+            verify(view).setUpView(any())
+            verify(view).hideLoading()
         }
-
-        //When
-        presenter.onCreated(any())
-
-        //Then
-        verify(view).setUpView(any())
     }
 
     @Test
@@ -84,12 +86,14 @@ class MovieDetailPresenterTest {
             doAnswer {
                 DomainError.ServerError.left()
             }.whenever(fetchMovieDetailUseCase)(any())
+
+
+            //When
+            presenter.onCreated(1)
+
+            //Then
+            verify(view).showError(any())
+            verify(view).showErrorView()
         }
-
-        //When
-        presenter.onCreated(any())
-
-        //Then
-        verify(view).showError(any())
     }
 }

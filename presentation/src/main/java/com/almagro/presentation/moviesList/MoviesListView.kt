@@ -11,4 +11,10 @@ interface MoviesListView {
     fun showError(action: () -> Unit)
 
     fun clearMovieList()
+
+    fun showLoading()
+
+    fun hideLoading()
+
+    fun showErrorView()
 }

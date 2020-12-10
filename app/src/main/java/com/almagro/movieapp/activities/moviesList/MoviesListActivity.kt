@@ -3,7 +3,7 @@ package com.almagro.movieapp.activities.moviesList
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.almagro.domain.entities.Movie
@@ -15,7 +15,6 @@ import com.almagro.movieapp.di.moviesList.MoviesListModule
 import com.almagro.movieapp.viewComponents.showSnackBarError
 import com.almagro.presentation.moviesList.MoviesListPresenter
 import com.almagro.presentation.moviesList.MoviesListView
-import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movies_list.*
 import javax.inject.Inject
 
@@ -45,6 +44,7 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
     }
 
     override fun loadMovies(moviesList: List<Movie>) {
+        moviesListError.visibility = View.GONE
         swipeRefreshLayout.isRefreshing = false
         isLoading = false
         isLastPage = false
@@ -62,6 +62,19 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
 
     override fun clearMovieList() {
         moviesListAdapter?.clear()
+    }
+
+    override fun showLoading() {
+        moviesListLoading.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        moviesListLoading.visibility = View.GONE
+    }
+
+    override fun showErrorView() {
+        moviesListLoading.visibility = View.GONE
+        moviesListError.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -122,8 +135,8 @@ class MoviesListActivity : AppCompatActivity(), MoviesListView {
     private fun setUpListeners() {
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = true
-            moviesListAdapter?.clear()
-            presenter.fetchPopularMovies()
+            presenter.resetCurrentValues()
+            presenter.updateMoviesByType()
         }
     }
 }

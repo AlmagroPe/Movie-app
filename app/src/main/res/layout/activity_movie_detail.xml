@@ -72,6 +72,16 @@
         android:textColor="@color/white"
         tools:text="Date"/>
 
+    <include
+        layout="@layout/item_error_fullscreen"
+        android:id="@+id/moviesDetailError"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/item_loading_fullscreen"
+        android:id="@+id/moviesDetailLoading"
+        android:visibility="gone"/>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/clRoot"
         android:layout_width="match_parent"

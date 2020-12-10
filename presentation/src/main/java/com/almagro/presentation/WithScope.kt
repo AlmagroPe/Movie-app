@@ -18,12 +18,6 @@ interface WithScope : CoroutineScope {
             IO { f() }.suspendMap { Main { success(it) } }.handleError { error(it) }
         }
 
-    fun <A> CoroutineScope.launchIO(
-        f: suspend () -> A,
-        success: (A) -> Unit = {}
-    ): Job =
-        launch { success(IO { f() }) }
-
     suspend fun <T> IO(block: suspend CoroutineScope.() -> T): T =
         withContext(io) { block() }
 

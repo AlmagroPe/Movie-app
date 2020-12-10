@@ -1,18 +1,18 @@
 package com.almagro.domain.entities
 
-data class Movie(
-    val id: Int,
-    val originalTitle: String,
-    val originalLanguage: String,
-    val title: String,
-    val backdropPath: String,
-    val popularity: Float,
-    val voteCount: Int,
-    val video: Boolean,
-    val voteAverage: Float,
-    val posterPath: String,
-    val adult: Boolean,
-    val releaseDate: String
+open class Movie(
+    open val id: Int,
+    open val originalTitle: String,
+    open val originalLanguage: String,
+    open val title: String,
+    open val backdropPath: String,
+    open val popularity: Float,
+    open val voteCount: Int,
+    open val video: Boolean,
+    open val voteAverage: Float,
+    open val posterPath: String,
+    open val adult: Boolean,
+    open val releaseDate: String
 ) {
     companion object {
         fun empty() =

@@ -78,13 +78,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 Movies.empty().right()
             }.whenever(fetchPopularMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchPopularMovies()
+
+            //Then
+            verify(view).loadMovies(any())
+            verify(view).hideLoading()
         }
-
-        //When
-        presenter.fetchPopularMovies()
-
-        //Then
-        Mockito.verify(view).loadMovies(any())
     }
 
     @Test
@@ -94,13 +95,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 DomainError.ServerError.left()
             }.whenever(fetchPopularMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchPopularMovies()
+
+            //Then
+            verify(view).showError(any())
+            verify(view).showErrorView()
         }
-
-        //When
-        presenter.fetchPopularMovies()
-
-        //Then
-        Mockito.verify(view).showError(any())
     }
 
     @Test
@@ -110,13 +112,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 Movies.empty().right()
             }.whenever(fetchOnAirMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchOnAirMovies()
+
+            //Then
+            verify(view).loadMovies(any())
+            verify(view).hideLoading()
         }
-
-        //When
-        presenter.fetchOnAirMovies()
-
-        //Then
-        Mockito.verify(view).loadMovies(any())
     }
 
     @Test
@@ -126,13 +129,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 DomainError.ServerError.left()
             }.whenever(fetchOnAirMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchOnAirMovies()
+
+            //Then
+            verify(view).showError(any())
+            verify(view).showErrorView()
         }
-
-        //When
-        presenter.fetchOnAirMovies()
-
-        //Then
-        Mockito.verify(view).showError(any())
     }
 
     @Test
@@ -142,13 +146,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 Movies.empty().right()
             }.whenever(fetchTopRatedMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchTopRatedMovies()
+
+            //Then
+            verify(view).loadMovies(any())
+            verify(view).hideLoading()
         }
-
-        //When
-        presenter.fetchTopRatedMovies()
-
-        //Then
-        Mockito.verify(view).loadMovies(any())
     }
 
     @Test
@@ -158,13 +163,14 @@ class MoviesListPresenterTest {
             Mockito.doAnswer {
                 DomainError.ServerError.left()
             }.whenever(fetchTopRatedMoviesUseCase).invoke(any())
+
+            //When
+            presenter.fetchTopRatedMovies()
+
+            //Then
+            verify(view).showError(any())
+            verify(view).showErrorView()
         }
-
-        //When
-        presenter.fetchTopRatedMovies()
-
-        //Then
-        Mockito.verify(view).showError(any())
     }
 
     @Test
